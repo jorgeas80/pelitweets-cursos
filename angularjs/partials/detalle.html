@@ -1,0 +1,24 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#lista-pelis">Pelitweets AngularJS</a>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container">
+    <div ng-hide="movie.$resolved" class="alert alert-info">
+        <strong>Cargando detalle de la película...</strong> 
+    </div>
+
+    <div ng-hide="!movie.$resolved" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Detalles de la película</h3>
+        </div>
+
+        <div class="panel-body">
+            {{movie}}
+        </div>
+    </div>
+</div>

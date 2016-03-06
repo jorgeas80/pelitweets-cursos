@@ -1,0 +1,84 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#lista-pelis">Pelitweets AngularJS</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <form class="navbar-form navbar-right" role="form">
+                <div class="form-group">
+                    <input ng-model="searchTerm.movie_title" type="text" placeholder="Busca por título" class="form-control">
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container">
+    <div ng-hide="movies || movies.length > 0" class="alert alert-danger">
+        <strong>No se han podido obtener las películas :-(</strong> 
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Listado de películas</h3>
+        </div>
+
+        <div class="panel-body">
+
+            <table ng-show="movies || movies.length > 0" class="table table-responsive table-hover table-striped table-condensed table-bordered">
+                <thead>
+                    <tr>
+                        <th ng-click="setOrder('movie_title')">
+                            Título 
+                            <span ng-show="orderby == 'movie_title' && !reverse" class="fa fa-caret-down"></span>
+                            <span ng-show="orderby == 'movie_title' && reverse" class="fa fa-caret-up"></span>
+                        </th>
+
+                        <!-- We are passing a function name as argument for setOrder here -->
+                        <th ng-click="setOrder(runtimeJustNumber)">
+                            Duración
+                            <span ng-show="orderby == runtimeJustNumber && !reverse" class="fa fa-caret-down"></span>
+                            <span ng-show="orderby == runtimeJustNumber && reverse" class="fa fa-caret-up"></span>
+                        </th>
+                        <th ng-click="setOrder('movie_release_date')">
+                            Fecha de estreno
+                            <span ng-show="orderby == 'movie_release_date' && !reverse" class="fa fa-caret-down"></span>
+                            <span ng-show="orderby == 'movie_release_date' && reverse" class="fa fa-caret-up"></span>
+                        </th>
+                        <th ng-click="setOrder('movie_rating_imdb')">
+                            Nota IMDB
+                            <span ng-show="orderby == 'movie_rating_imdb' && !reverse" class="fa fa-caret-down"></span>
+                            <span ng-show="orderby == 'movie_rating_imdb' && reverse" class="fa fa-caret-up"></span>
+                        </th>
+                        <th ng-click="setOrder('movie_rating_fa')">
+                            Nota Filmaffinity
+                            <span ng-show="orderby == 'movie_rating_fa' && !reverse" class="fa fa-caret-down"></span>
+                            <span ng-show="orderby == 'movie_rating_fa' && reverse" class="fa fa-caret-up"></span>
+                        </th>
+                        <th ng-click="">Detalles</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td colspan="6" ng-show="movies.length == 0" class="alert alert-info">Cargando las películas...</td>
+                    </tr>
+                    <tr ng-repeat="movie in movies | filter: searchTerm | orderBy : orderby : reverse">
+                        <td>{{movie.movie_title}}</td>
+                        <td>{{movie.movie_runtime}}</td>
+                        <td>{{movie.movie_release_date}}</td>
+                        <td>{{movie.movie_rating_imdb}}</td>
+                        <td>{{movie.movie_rating_fa}}</td>
+                        <td><a ng-href="#detalle-peli/{{movie.movie_id_normalized}}">Ver detalles</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+
+
