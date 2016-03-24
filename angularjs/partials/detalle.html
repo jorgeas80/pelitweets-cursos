@@ -26,22 +26,32 @@
                     <dl class="dl-horizontal">
                         <dt>Duración</dt>
                         <dd>{{movie.movie_runtime}}</dd>
-                        
+
                         <dt>Nota IMDB</dt>
                         <dd>{{movie.movie_rating_imdb}}</dd>
-                        
+
                         <dt>Nota Filmaffinity</dt>
                         <dd>{{movie.movie_rating_fa}}</dd>
-                        
+
                         <dt>País</dt>
                         <dd>{{movie.movie_country}}</dd>
-                        
+
                         <dt>Argumento</dt>
                         <dd>{{movie.movie_plot}}</dd>
                     </dl>
                 </div>
             </div>
-            {{movie}}
+        </div>
+        <br>
+        <div class="panel-heading">
+            <h3 class="panel-title">Tweets</h3>
+        </div>
+
+        <div class="panel-body">
+            <div class="list-group-item" ng-repeat="tweet in movie.movie_tweets_analyzed">
+                <h4 class="list-group-item-heading"><a ng-href="http://twitter.com/{{tweet.nick}}">@{{tweet.nick}}</a></h4>
+                <p class="list-group-item-text">{{tweet.text}}</p>
+            </div>
         </div>
     </div>
 </div>
