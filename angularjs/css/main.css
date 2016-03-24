@@ -6,7 +6,7 @@ body {
     padding-top: 60px;
 }
 
-.row{
+.row {
     margin-top:40px;
     padding: 0 10px;
 }
@@ -19,6 +19,25 @@ body {
 	margin-top: -20px;
 	font-size: 15px;
 }
+
+.panel-body > .row {
+    margin-top: 10px;
+}
+
+.panel-body {
+    padding: 0;
+}
+
+.panel-body header {
+    font-size: 1.6em;
+    font-weight: bold;
+    padding-left: 17px;
+}
+
+.panel-body > .table {
+    margin-bottom:0px;
+}
+
 
 .table > thead > tr > th{
     border-right: 1px solid #ddd;
@@ -36,11 +55,6 @@ body {
 .table > tbody > tr > td:last-of-type {
     border-right: 0px;
 }
-
-.panel-body {
-    padding: 0;
-}
-.panel-body > .table{margin-bottom:0px;}
 
 
 

@@ -71,7 +71,10 @@
                         <td>{{movie.movie_release_date}}</td>
                         <td>{{movie.movie_rating_imdb}}</td>
                         <td>{{movie.movie_rating_fa}}</td>
-                        <td><a ng-href="#detalle-peli/{{movie.movie_id_normalized}}">Ver detalles</a></td>
+                        <td ng-switch="movie.movie_id_normalized">
+                            <span ng-switch-when="-">Detalle no disponible</span>
+                            <a ng-switch-default ng-href="#detalle-peli/{{movie.movie_id_normalized}}">Ver detalle</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>

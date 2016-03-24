@@ -1,11 +1,10 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#lista-pelis">Pelitweets AngularJS</a>
+            <a class="navbar-brand" href="#lista-pelis">Volver a listado</a>
         </div>
     </div>
 </nav>
-
 
 <div class="container">
     <div ng-hide="movie.$resolved" class="alert alert-info">
@@ -14,10 +13,34 @@
 
     <div ng-hide="!movie.$resolved" class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Detalles de la película</h3>
+            <h3 class="panel-title">{{movie.movie_original_title}}</h3>
         </div>
 
         <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <img class="img-responsive" ng-src="{{movie.movie_poster_link}}" alt="Cartel de la película">
+                </div>
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                    <header>Ficha técnica</header>
+                    <dl class="dl-horizontal">
+                        <dt>Duración</dt>
+                        <dd>{{movie.movie_runtime}}</dd>
+                        
+                        <dt>Nota IMDB</dt>
+                        <dd>{{movie.movie_rating_imdb}}</dd>
+                        
+                        <dt>Nota Filmaffinity</dt>
+                        <dd>{{movie.movie_rating_fa}}</dd>
+                        
+                        <dt>País</dt>
+                        <dd>{{movie.movie_country}}</dd>
+                        
+                        <dt>Argumento</dt>
+                        <dd>{{movie.movie_plot}}</dd>
+                    </dl>
+                </div>
+            </div>
             {{movie}}
         </div>
     </div>
