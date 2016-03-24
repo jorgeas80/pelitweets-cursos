@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Pelitweets jQuery + Bootstrap 3</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn t work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#lista-pelis">Pelitweets jQuery + Bootstrap 3</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <form class="navbar-form navbar-right" role="form">
+                        <div class="form-group">
+                            <input id="search-by-title" type="text" placeholder="Busca por título" class="form-control">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="container">
+            <div id="error-getting-movies" class="alert alert-danger hidden">
+                <strong>No se han podido obtener las películas :-(</strong> 
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Listado de películas</h3>
+                </div>
+
+                <div class="panel-body">
+
+                    <table id="movies-table" class="table table-responsive table-hover table-striped table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Título 
+                                    <a id="sort-by-title-up" href="#"><span class="fa fa-caret-down"></span></a>
+                                    <a id="sort-by-title-down" href="#"><span class="fa fa-caret-up"></span></a>
+                                </th>
+
+                                <!-- We are passing a function name as argument for setOrder here -->
+                                <th>
+                                    Duración
+                                    <a id="sort-by-runtime-up" href="#"><span class="fa fa-caret-down"></span></a>
+                                    <a id="sort-by-runtime-down" href="#"><span class="fa fa-caret-up"></span></a>
+                                </th>
+                                <th>
+                                    Fecha de estreno
+                                    <a href="#" id="sort-by-release-date-up"><span class="fa fa-caret-down"></span></a>
+                                    <a href="#" id="sort-by-release-date-down"><span class="fa fa-caret-up"></span></a>
+                                </th>
+                                <th>
+                                    Nota IMDB
+                                    <a href="#" id="sort-by-imdb-rating-up"><span class="fa fa-caret-down"></span></a>
+                                    <a href="#" id="sort-by-imdb-rating-down"><span class="fa fa-caret-up"></span></a>
+                                </th>
+                                <th>
+                                    Nota Filmaffinity
+                                    <a href="#" id="sort-by-fa-rating-up"><span class="fa fa-caret-down"></span></a>
+                                    <a href="#" id="sort-by-fa-rating-down"><span class="fa fa-caret-up"></span></a>
+                                </th>
+                                <th onclick="">Detalles</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td id="loading-movies" colspan="6" class="alert alert-info">Cargando las películas...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+        <footer>
+            <div class="container">
+                <p class="text-muted">Pelitweets - 2016</p>
+            </div>
+        </footer>
+
+        <script src="js/vendor/jquery-1.12.1.min.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
+
+
