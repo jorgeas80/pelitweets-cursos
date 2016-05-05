@@ -36,7 +36,8 @@
                             <span ng-show="vm.queryOptions.orderby == 'movie_title' && vm.queryOptions.reverse" class="fa fa-caret-up"></span>
                         </th>
 
-                        <!-- We are passing a function name as argument for vm.setOrder here -->
+                        <!-- We are passing a function name as argument for vm.setOrder here. As orderby accepts and expression as argument
+                            It will call that function with all the elements to be sorted (the movie objects) -->
                         <th ng-click="vm.setOrder(vm.runtimeJustNumber)">
                             Duración
                             <span ng-show="vm.queryOptions.orderby == runtimeJustNumber && !vm.queryOptions.reverse" class="fa fa-caret-down"></span>
