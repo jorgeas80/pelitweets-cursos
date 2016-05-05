@@ -16,7 +16,7 @@
 
 
 <div class="container">
-    <div ng-hide="movies || movies.length > 0" class="alert alert-danger">
+    <div ng-hide="vm.movies || vm.movies.length > 0" class="alert alert-danger">
         <strong>No se han podido obtener las películas :-(</strong> 
     </div>
 
@@ -27,35 +27,35 @@
 
         <div class="panel-body">
 
-            <table ng-show="movies || movies.length > 0" class="table table-responsive table-hover table-striped table-condensed table-bordered">
+            <table ng-show="vm.movies || vm.movies.length > 0" class="table table-responsive table-hover table-striped table-condensed table-bordered">
                 <thead>
                     <tr>
                         <th ng-click="setOrder('movie_title')">
                             Título 
-                            <span ng-show="orderby == 'movie_title' && !reverse" class="fa fa-caret-down"></span>
-                            <span ng-show="orderby == 'movie_title' && reverse" class="fa fa-caret-up"></span>
+                            <span ng-show="vm.querypOptions.orderby == 'movie_title' && !vm.querypOptions.reverse" class="fa fa-caret-down"></span>
+                            <span ng-show="vm.querypOptions.orderby == 'movie_title' && vm.querypOptions.reverse" class="fa fa-caret-up"></span>
                         </th>
 
                         <!-- We are passing a function name as argument for setOrder here -->
                         <th ng-click="setOrder(runtimeJustNumber)">
                             Duración
-                            <span ng-show="orderby == runtimeJustNumber && !reverse" class="fa fa-caret-down"></span>
-                            <span ng-show="orderby == runtimeJustNumber && reverse" class="fa fa-caret-up"></span>
+                            <span ng-show="vm.querypOptions.orderby == runtimeJustNumber && !vm.querypOptions.reverse" class="fa fa-caret-down"></span>
+                            <span ng-show="vm.querypOptions.orderby == runtimeJustNumber && vm.querypOptions.reverse" class="fa fa-caret-up"></span>
                         </th>
                         <th ng-click="setOrder('movie_release_date')">
                             Fecha de estreno
-                            <span ng-show="orderby == 'movie_release_date' && !reverse" class="fa fa-caret-down"></span>
-                            <span ng-show="orderby == 'movie_release_date' && reverse" class="fa fa-caret-up"></span>
+                            <span ng-show="vm.querypOptions.orderby == 'movie_release_date' && !vm.querypOptions.reverse" class="fa fa-caret-down"></span>
+                            <span ng-show="vm.querypOptions.orderby == 'movie_release_date' && vm.querypOptions.reverse" class="fa fa-caret-up"></span>
                         </th>
                         <th ng-click="setOrder('movie_rating_imdb')">
                             Nota IMDB
-                            <span ng-show="orderby == 'movie_rating_imdb' && !reverse" class="fa fa-caret-down"></span>
-                            <span ng-show="orderby == 'movie_rating_imdb' && reverse" class="fa fa-caret-up"></span>
+                            <span ng-show="vm.querypOptions.orderby == 'movie_rating_imdb' && !vm.querypOptions.reverse" class="fa fa-caret-down"></span>
+                            <span ng-show="vm.querypOptions.orderby == 'movie_rating_imdb' && vm.querypOptions.reverse" class="fa fa-caret-up"></span>
                         </th>
                         <th ng-click="setOrder('movie_rating_fa')">
                             Nota Filmaffinity
-                            <span ng-show="orderby == 'movie_rating_fa' && !reverse" class="fa fa-caret-down"></span>
-                            <span ng-show="orderby == 'movie_rating_fa' && reverse" class="fa fa-caret-up"></span>
+                            <span ng-show="vm.querypOptions.orderby == 'movie_rating_fa' && !vm.querypOptions.reverse" class="fa fa-caret-down"></span>
+                            <span ng-show="vm.querypOptions.orderby == 'movie_rating_fa' && vm.querypOptions.reverse" class="fa fa-caret-up"></span>
                         </th>
                         <th ng-click="">Detalles</th>
                     </tr>
@@ -63,9 +63,9 @@
 
                 <tbody>
                     <tr>
-                        <td colspan="6" ng-show="movies.length == 0" class="alert alert-info">Cargando las películas...</td>
+                        <td colspan="6" ng-show="vm.movies.length == 0" class="alert alert-info">Cargando las películas...</td>
                     </tr>
-                    <tr ng-repeat="movie in movies | filter: searchTerm | orderBy : orderby : reverse">
+                    <tr ng-repeat="movie in vm.movies | filter: searchTerm | orderBy : vm.querypOptions.orderby : vm.querypOptions.reverse">
                         <td>{{movie.movie_title}}</td>
                         <td>{{movie.movie_runtime}}</td>
                         <td>{{movie.movie_release_date}}</td>

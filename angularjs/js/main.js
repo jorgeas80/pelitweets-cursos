@@ -7,7 +7,7 @@ function RoutingConfig($routeProvider, pelitweetsUrl) {
               })
         .when('/lista-pelis',
              {
-                controller: 'MovieListCtrl',
+                controller: 'MovieListCtrl as vm',
                 templateUrl: 'partials/listado.html',
                 resolve: {
                     // AngularJS will automatically inject the service Movie here when 
@@ -40,5 +40,5 @@ angular
     // Specify injections
     RoutingConfig.$inject = ['$routeProvider', 'pelitweetsUrl', 'pelitweetsBaseMovieUrl'];
     Movie.$inject = ['$resource'];
-    MovieListCtrl.$inject = ['$scope', 'movies'];
+    MovieListCtrl.$inject = ['movies'];
     MovieDetailCtrl.$inject = ['$scope', '$routeParams' ,'pelitweetsBaseMovieUrl', 'Movie'];
