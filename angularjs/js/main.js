@@ -24,7 +24,7 @@ function RoutingConfig($routeProvider, pelitweetsUrl) {
                      **/
 
                     // Option 2: if we want to automatically resolve 'movies' using just plain $http,
-                    // instead of Movie service. Simpler
+                    // instead of pelitweetsFactory service. Simpler
 
                     movies: function($http, pelitweetsUrl) {
                         return $http.get(pelitweetsUrl).then(function(response) {
@@ -70,6 +70,7 @@ angular
 
     pelitweetsFactory.$inject = ['$resource', '$http', 'pelitweetsUrl', 'pelitweetsBaseMovieUrl'];
 
+    // The only injected dependency is the resolved variable 'movies'. No need for more.
     MovieListCtrl.$inject = ['movies'];
 
     // Specify injections for other versions of the list controller too
