@@ -50,7 +50,7 @@ angular
     .constant('pelitweetsBaseMovieUrl', 'http://pelitweets.herokuapp.com/api/movie/:id')
     .config(RoutingConfig)
 
-    // Unify external request in one service
+    // Unify external request in one service. Not used by default, but could be used
     .factory('pelitweetsFactory', pelitweetsFactory)
 
     .controller('MovieListCtrl', MovieListCtrl)
