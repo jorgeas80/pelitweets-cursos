@@ -6,11 +6,11 @@ function RoutingConfig($routeProvider, pelitweetsUrl) {
                 templateUrl: 'partials/listado.html',
                 resolve: {
 
-                    // Option 1: We want to automatically resolve 'movies' using PelitweetsFactory service
+                    // Option 1: We want to automatically resolve 'movies' using pelitweetsFactory service
 
-                    // AngularJS will automatically inject the service Movie here when
+                    // AngularJS will automatically inject the service pelitweetsFactory here when
                     // needs to resolve 'movies' to be used in MovieListCtrl. No need
-                    // to inject 'Movie' as dependency of config. 
+                    // to inject 'pelitweetsFactory' as dependency of config.
                     // Besides, you just can inject constant or provider as dependencies
                     // of config module. This is to prevent accidental instantiation of 
                     // services before they have been fully configured.
