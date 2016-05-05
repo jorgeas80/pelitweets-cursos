@@ -30,29 +30,29 @@
             <table ng-show="vm.movies || vm.movies.length > 0" class="table table-responsive table-hover table-striped table-condensed table-bordered">
                 <thead>
                     <tr>
-                        <th ng-click="setOrder('movie_title')">
+                        <th ng-click="vm.setOrder('movie_title')">
                             Título 
                             <span ng-show="vm.queryOptions.orderby == 'movie_title' && !vm.queryOptions.reverse" class="fa fa-caret-down"></span>
                             <span ng-show="vm.queryOptions.orderby == 'movie_title' && vm.queryOptions.reverse" class="fa fa-caret-up"></span>
                         </th>
 
-                        <!-- We are passing a function name as argument for setOrder here -->
-                        <th ng-click="setOrder(runtimeJustNumber)">
+                        <!-- We are passing a function name as argument for vm.setOrder here -->
+                        <th ng-click="vm.setOrder(vm.runtimeJustNumber)">
                             Duración
                             <span ng-show="vm.queryOptions.orderby == runtimeJustNumber && !vm.queryOptions.reverse" class="fa fa-caret-down"></span>
                             <span ng-show="vm.queryOptions.orderby == runtimeJustNumber && vm.queryOptions.reverse" class="fa fa-caret-up"></span>
                         </th>
-                        <th ng-click="setOrder('movie_release_date')">
+                        <th ng-click="vm.setOrder('movie_release_date')">
                             Fecha de estreno
                             <span ng-show="vm.queryOptions.orderby == 'movie_release_date' && !vm.queryOptions.reverse" class="fa fa-caret-down"></span>
                             <span ng-show="vm.queryOptions.orderby == 'movie_release_date' && vm.queryOptions.reverse" class="fa fa-caret-up"></span>
                         </th>
-                        <th ng-click="setOrder('movie_rating_imdb')">
+                        <th ng-click="vm.setOrder('movie_rating_imdb')">
                             Nota IMDB
                             <span ng-show="vm.queryOptions.orderby == 'movie_rating_imdb' && !vm.queryOptions.reverse" class="fa fa-caret-down"></span>
                             <span ng-show="vm.queryOptions.orderby == 'movie_rating_imdb' && vm.queryOptions.reverse" class="fa fa-caret-up"></span>
                         </th>
-                        <th ng-click="setOrder('movie_rating_fa')">
+                        <th ng-click="vm.setOrder('movie_rating_fa')">
                             Nota Filmaffinity
                             <span ng-show="vm.queryOptions.orderby == 'movie_rating_fa' && !vm.queryOptions.reverse" class="fa fa-caret-down"></span>
                             <span ng-show="vm.queryOptions.orderby == 'movie_rating_fa' && vm.queryOptions.reverse" class="fa fa-caret-up"></span>
