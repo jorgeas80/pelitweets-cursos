@@ -28,16 +28,17 @@ angular
     .module('pelitweets', ['ngRoute', 'ngResource'])
     .constant('pelitweetsUrl', 'http://pelitweets.herokuapp.com/api/movies')
     .constant('pelitweetsBaseMovieUrl', 'http://pelitweets.herokuapp.com/api/movie/:id')
-    .config(['$routeProvider', 'pelitweetsUrl', 'pelitweetsBaseMovieUrl', RoutingConfig])
+    .config(RoutingConfig)
 
     // Both work. Check PelitweetsService.js
     //.factory('Movie', ['$resource', MovieFactory])
-    .service('Movie', ['$resource', Movie])
+    .service('Movie', Movie)
 
-    .controller('MovieListCtrl', ['$scope', 'movies', MovieListCtrl])
-    .controller('MovieDetailCtrl', ['$scope', '$routeParams' ,'pelitweetsBaseMovieUrl', 'Movie', MovieDetailCtrl]);
+    .controller('MovieListCtrl', MovieListCtrl)
+    .controller('MovieDetailCtrl', MovieDetailCtrl);
 
-    /**
-     * Starting from Angular 1.3, we can't declare controllers in the global
-     * scope. They must be registered by using module.controller.
-     **/
+    // Specify injections
+    RoutingConfig.$inject = ['$routeProvider', 'pelitweetsUrl', 'pelitweetsBaseMovieUrl'];
+    Movie.$inject = ['$resource'];
+    MovieListCtrl.$inject = ['$scope', 'movies'];
+    MovieDetailCtrl.$inject = ['$scope', '$routeParams' ,'pelitweetsBaseMovieUrl', 'Movie'];
