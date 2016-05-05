@@ -7,37 +7,37 @@
 </nav>
 
 <div class="container">
-    <div ng-hide="movie.$resolved" class="alert alert-info">
+    <div ng-hide="vm.movie.$resolved" class="alert alert-info">
         <strong>Cargando detalle de la película...</strong> 
     </div>
 
-    <div ng-hide="!movie.$resolved" class="panel panel-default">
+    <div ng-hide="!vm.movie.$resolved" class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">{{movie.movie_original_title}}</h3>
+            <h3 class="panel-title">{{vm.movie.movie_original_title}}</h3>
         </div>
 
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                    <img class="img-responsive" ng-src="{{movie.movie_poster_link}}" alt="Cartel de la película">
+                    <img class="img-responsive" ng-src="{{vm.movie.movie_poster_link}}" alt="Cartel de la película">
                 </div>
                 <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                     <header>Ficha técnica</header>
                     <dl class="dl-horizontal">
                         <dt>Duración</dt>
-                        <dd>{{movie.movie_runtime}}</dd>
+                        <dd>{{vm.movie.movie_runtime}}</dd>
 
                         <dt>Nota IMDB</dt>
-                        <dd>{{movie.movie_rating_imdb}}</dd>
+                        <dd>{{vm.movie.movie_rating_imdb}}</dd>
 
                         <dt>Nota Filmaffinity</dt>
-                        <dd>{{movie.movie_rating_fa}}</dd>
+                        <dd>{{vm.movie.movie_rating_fa}}</dd>
 
                         <dt>País</dt>
-                        <dd>{{movie.movie_country}}</dd>
+                        <dd>{{vm.movie.movie_country}}</dd>
 
                         <dt>Argumento</dt>
-                        <dd>{{movie.movie_plot}}</dd>
+                        <dd>{{vm.movie.movie_plot}}</dd>
                     </dl>
                 </div>
             </div>
@@ -48,7 +48,7 @@
         </div>
 
         <div class="panel-body">
-            <div class="list-group-item" ng-repeat="tweet in movie.movie_tweets_analyzed">
+            <div class="list-group-item" ng-repeat="tweet in vm.movie.movie_tweets_analyzed">
                 <h4 class="list-group-item-heading"><a ng-href="http://twitter.com/{{tweet.nick}}">@{{tweet.nick}}</a></h4>
                 <p class="list-group-item-text">{{tweet.text}}</p>
             </div>

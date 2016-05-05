@@ -2,7 +2,7 @@ function RoutingConfig($routeProvider, pelitweetsUrl) {
     $routeProvider
         .when('/detalle-peli/:id',
               {
-                controller: 'MovieDetailCtrl',
+                controller: 'MovieDetailCtrl as vm',
                 templateUrl: 'partials/detalle.html'
               })
         .when('/lista-pelis',
@@ -41,4 +41,4 @@ angular
     RoutingConfig.$inject = ['$routeProvider', 'pelitweetsUrl', 'pelitweetsBaseMovieUrl'];
     Movie.$inject = ['$resource'];
     MovieListCtrl.$inject = ['movies'];
-    MovieDetailCtrl.$inject = ['$scope', '$routeParams' ,'pelitweetsBaseMovieUrl', 'Movie'];
+    MovieDetailCtrl.$inject = ['$routeParams' ,'pelitweetsBaseMovieUrl', 'Movie'];
