@@ -6,7 +6,7 @@ function RoutingConfig($routeProvider, pelitweetsUrl) {
                 templateUrl: 'partials/listado.html',
                 resolve: {
 
-                    // Option 1: We want to automatically resolve 'movies' using Movie service
+                    // Option 1: We want to automatically resolve 'movies' using PelitweetsFactory service
 
                     // AngularJS will automatically inject the service Movie here when
                     // needs to resolve 'movies' to be used in MovieListCtrl. No need
@@ -16,17 +16,22 @@ function RoutingConfig($routeProvider, pelitweetsUrl) {
                     // services before they have been fully configured.
 
                     /**
-                    movies: function(Movie) {
-                        return Movie.resource(pelitweetsUrl).query()
-                    }**/
+                    movies: function(pelitweetsFactory, pelitweetsUrl) {
+                        return pelitweetsFactory.getMovieList().then(function(response) {
+                            return response.data;
+                        })
+                    }
+                     **/
 
                     // Option 2: if we want to automatically resolve 'movies' using just plain $http,
                     // instead of Movie service. Simpler
+
                     movies: function($http, pelitweetsUrl) {
                         return $http.get(pelitweetsUrl).then(function(response) {
                             return response.data;
                         })
                     }
+
 
 
                 }
@@ -45,22 +50,34 @@ angular
     .constant('pelitweetsBaseMovieUrl', 'http://pelitweets.herokuapp.com/api/movie/:id')
     .config(RoutingConfig)
 
-    // Both work. Check PelitweetsService.js
-    //.factory('Movie', ['$resource', MovieFactory])
-    .service('Movie', Movie)
+    // Unify external request in one service
+    .factory('pelitweetsFactory', pelitweetsFactory)
 
     .controller('MovieListCtrl', MovieListCtrl)
-
-    // Another version of the controller, using plain $http service and no autoresolve in config time
+    // Another 2 versions of the controller, using implemented factory or basic AngularJS services. Not using automatic resolution in config time
     //.controller('MovieListCtrl', MovieListCtrlHTTPNoAutoResolve)
+    //.controller('MovieListCtrl', MovieListCtrlUsingFactory)
+
 
     .controller('MovieDetailCtrl', MovieDetailCtrl);
+    // Another version, using the existent pelitweetsFactory
+    //.controller('MovieDetailCtrl', MovieDetailCtrlUsingFactory);
 
-    // Specify injections
+    /**
+     * Now, we specify injections. Not mandatory, but useful
+     */
     RoutingConfig.$inject = ['$routeProvider', 'pelitweetsUrl', 'pelitweetsBaseMovieUrl'];
-    Movie.$inject = ['$resource'];
-    MovieListCtrl.$inject = ['movies'];
-    MovieDetailCtrl.$inject = ['$routeParams' ,'pelitweetsBaseMovieUrl', 'Movie'];
 
-    // Specify injections for another version of the controller too
+    pelitweetsFactory.$inject = ['$resource', '$http', 'pelitweetsUrl', 'pelitweetsBaseMovieUrl'];
+
+    MovieListCtrl.$inject = ['movies'];
+
+    // Specify injections for other versions of the list controller too
     MovieListCtrlHTTPNoAutoResolve.$inject = ['$http', 'pelitweetsUrl'];
+    MovieListCtrlUsingFactory.$inject = ['pelitweetsFactory'];
+
+    MovieDetailCtrl.$inject = ['$resource', '$routeParams' ,'pelitweetsBaseMovieUrl'];
+
+    // Specify injections for other version of the detail controller too
+    MovieDetailCtrlUsingFactory.$inject = ['$routeParams', 'pelitweetsFactory'];
+

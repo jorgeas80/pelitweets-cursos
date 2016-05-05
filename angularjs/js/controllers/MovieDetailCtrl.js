@@ -1,6 +1,13 @@
-function MovieDetailCtrl($routeParams, pelitweetsBaseMovieUrl, Movie) {
+function MovieDetailCtrl($resource, $routeParams, pelitweetsBaseMovieUrl) {
 
     var vm = this;
 
-    vm.movie = Movie.resource(pelitweetsBaseMovieUrl).get({id: $routeParams.id})
+    vm.movie = $resource(pelitweetsBaseMovieUrl).get({id: $routeParams.id})
+}
+
+
+function MovieDetailCtrlUsingFactory($routeParams, pelitweetsFactory) {
+    var vm = this;
+
+    vm.movie = pelitweetsFactory.getMovieDetail($routeParams.id)
 }
