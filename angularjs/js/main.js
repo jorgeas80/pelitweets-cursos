@@ -18,7 +18,7 @@ function RoutingConfig($routeProvider) {
                 }
              })
         .when('/detalle-peli/:id', {
-                controller: 'MovieDetailCtrl as vm',
+                //controller: 'MovieDetailCtrl as vm',
                 templateUrl: 'partials/detalle.html'
             })
 
@@ -30,6 +30,7 @@ angular
     .constant('pelitweetsUrl', 'http://pelitweets.herokuapp.com/api/movies')
     .constant('pelitweetsBaseMovieUrl', 'http://pelitweets.herokuapp.com/api/movie/:id')
     .config(RoutingConfig)
+    .directive('ptMovieDetails', MovieDetailDirective)
     .factory('pelitweetsFactory', pelitweetsFactory)
     .controller('MovieListCtrl', MovieListCtrl)
     .controller('MovieDetailCtrl', MovieDetailCtrl);
