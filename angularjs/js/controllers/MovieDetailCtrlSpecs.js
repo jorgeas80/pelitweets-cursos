@@ -9,10 +9,11 @@ describe("pelitweets MovieDetailCtrl", function() {
         // Load module
         module('pelitweets');
 
-        // Mock factory to spy a call over its method
-        mockPelitweetsFactory = jasmine.createSpyObj('pelitweetsFactory', ['getMovieDetail']);
-
         inject(function($controller, $routeParams) {
+
+            mockPelitweetsFactory = jasmine.createSpyObj('pelitweetsFactory', ['getMovieDetail']);
+            mockPelitweetsFactory.getMovieDetail.and.returnValue("foo");
+
             ctrl = $controller('MovieDetailCtrl', {
                 $routeParams: $routeParams,
                 pelitweetsFactory: mockPelitweetsFactory
@@ -20,18 +21,9 @@ describe("pelitweets MovieDetailCtrl", function() {
         });
     });
 
-    it("should have 'movie' defined", function() {
-
-        //spyOn(mockPelitweetsFactory, 'getMovieDetail');
-
-        //expect(mockPelitweetsFactory.getMovieDetail).toHaveBeenCalled();
-
-        //expect(ctrl.movie).toBeDefined();
-        expect(true).toBe(true);
-    });
-
     it("should get the expected data from service", function() {
-        expect(true).toBe(true);
+        expect(mockPelitweetsFactory.getMovieDetail).toHaveBeenCalled();
+        expect(ctrl.movie).toEqual("foo");
     })
 
 
