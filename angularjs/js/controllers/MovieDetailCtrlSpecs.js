@@ -24,7 +24,6 @@ describe("pelitweets MovieDetailCtrl", function() {
     it("should get the expected data from service", function() {
         expect(mockPelitweetsFactory.getMovieDetail).toHaveBeenCalled();
         expect(ctrl.movie).toEqual("foo");
-    })
-
+    });
 
 });
