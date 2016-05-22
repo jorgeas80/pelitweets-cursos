@@ -14,7 +14,9 @@ module.exports = function(config) {
             "controllers/MovieDetailCtrl.js",
             "directives/MovieDetailDirective.js",
             "main.js",
-            "services/pelitweetsfactorySpecs.js"
+            "services/pelitweetsfactorySpecs.js",
+            "controllers/MovieDetailCtrlSpecs.js",
+            "controllers/MovieListCtrlSpecs.js"
         ],
         autoWatch: true,
         browsers: ['Chrome']
