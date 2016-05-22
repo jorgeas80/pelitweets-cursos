@@ -24,7 +24,11 @@ function MovieListCtrl(movies) {
     vm.runtimeJustNumber = function(movie) {
         var runTimeArray = movie.movie_runtime.split(" ")
         if (runTimeArray && runTimeArray.length > 0) {
-            return Number(runTimeArray[0]);
+            var n = Number(runTimeArray[0]);
+            if (!isNaN(n))
+                return n;
+            else
+                return movie.movie_runtime;
         }
         
         else {
