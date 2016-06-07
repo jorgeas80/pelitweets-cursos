@@ -14,7 +14,22 @@
             </div>
             <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                 <header>Ficha técnica</header>
-                <pt-movie-detail movie="vm.movie"></pt-movie-detail>
+                <dl class="dl-horizontal">
+                    <dt>Duración</dt>
+                    <dd>{{vm.movie.movie_runtime}}</dd>
+
+                    <dt>Nota IMDB</dt>
+                    <dd>{{vm.movie.movie_rating_imdb}}</dd>
+
+                    <dt>Nota Filmaffinity</dt>
+                    <dd>{{vm.movie.movie_rating_fa}}</dd>
+
+                    <dt>País</dt>
+                    <dd>{{vm.movie.movie_country}}</dd>
+
+                    <dt>Argumento</dt>
+                    <dd>{{vm.movie.movie_plot}}</dd>
+                </dl>
             </div>
         </div>
     </div>
